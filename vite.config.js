@@ -15,12 +15,9 @@ export default defineConfig({
       fileName: 'main',
       formats: ['es']
     },
-    
     rollupOptions: {
       output: {
-        entryFileNames: 'main.js',
-        chunkFileNames: '[name].js',  // ← Modules sans hash
-        assetFileNames: '[name].[ext]' // ← Assets sans hash
+        entryFileNames: 'main.js'
       }
     }
   }

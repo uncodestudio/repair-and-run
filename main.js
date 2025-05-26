@@ -1,27 +1,23 @@
 import { pages } from './config.js'
 
-// Force Vite à voir tous les modules (important pour le build)
+// Import direct du module (pas dynamique)
+import { init as faqAccordionInit } from './modules/faq-accordion.js'
+
 const moduleMap = {
-  'faq-accordion': () => import('./modules/faq-accordion.js')
-  // Ajouter ici tes futurs modules :
-  // 'slider': () => import('./modules/slider.js'),
-  // 'menu-mobile': () => import('./modules/menu-mobile.js')
+  'faq-accordion': faqAccordionInit
 }
 
-async function loadModule(name) {
+function loadModule(name) {
   try {
     console.log(`📦 Chargement module: ${name}`)
     
-    const moduleLoader = moduleMap[name]
-    if (!moduleLoader) {
-      throw new Error(`Module ${name} non configuré dans moduleMap`)
+    const moduleInit = moduleMap[name]
+    if (!moduleInit) {
+      throw new Error(`Module ${name} non configuré`)
     }
     
-    const { init } = await moduleLoader()
-    if (init) {
-      init()
-      console.log(`✅ Module ${name} initialisé`)
-    }
+    moduleInit()
+    console.log(`✅ Module ${name} initialisé`)
   } catch (error) {
     console.error(`❌ Erreur module ${name}:`, error)
   }
