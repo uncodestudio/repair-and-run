@@ -3,7 +3,7 @@ import { pages } from './config.js'
 async function loadModule(name) {
   try {
     console.log(`📦 Chargement module: ${name}`)
-    const { init } = await import(`./modules/${name}.js`)
+    const { init } = await import(`./${name}.js`) // ← Changement ici
     if (init) {
       init()
       console.log(`✅ Module ${name} initialisé`)

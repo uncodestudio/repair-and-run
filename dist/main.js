@@ -1,16 +1,4 @@
-const i = (e, o, t) => {
-  const n = e[o];
-  return n ? typeof n == "function" ? n() : Promise.resolve(n) : new Promise((s, r) => {
-    (typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(
-      r.bind(
-        null,
-        new Error(
-          "Unknown variable dynamic import: " + o + (o.split("/").length !== t ? ". Note that variables only represent file names one level deep." : "")
-        )
-      )
-    );
-  });
-}, a = {
+const n = {
   homepage: ["faq-accordion"],
   blog: ["faq-accordion"],
   article: ["faq-accordion"]
@@ -18,26 +6,26 @@ const i = (e, o, t) => {
   // 'contact': ['contact-form', 'animations'],
   // 'shop': ['product-grid', 'animations']
 };
-async function c(e) {
+async function a(o) {
   try {
-    console.log(`📦 Chargement module: ${e}`);
-    const { init: o } = await i(/* @__PURE__ */ Object.assign({ "./modules/faq-accordion.js": () => import("./faq-accordion.js") }), `./modules/${e}.js`, 3);
-    o && (o(), console.log(`✅ Module ${e} initialisé`));
-  } catch (o) {
-    console.error(`❌ Erreur module ${e}:`, o);
+    console.log(`📦 Chargement module: ${o}`);
+    const { init: e } = await import(`./${o}.js`);
+    e && (e(), console.log(`✅ Module ${o} initialisé`));
+  } catch (e) {
+    console.error(`❌ Erreur module ${o}:`, e);
   }
 }
-function l() {
-  const e = document.body.dataset.page;
-  if (!e) {
+function c() {
+  const o = document.body.dataset.page;
+  if (!o) {
     console.warn('⚠️ Ajoute data-page="..." sur le body dans Webflow');
     return;
   }
-  const o = a[e];
-  if (!o) {
-    console.log(`📄 Page "${e}" : aucun module configuré`);
+  const e = n[o];
+  if (!e) {
+    console.log(`📄 Page "${o}" : aucun module configuré`);
     return;
   }
-  console.log(`🎯 Page: ${e} | Modules: ${o.join(", ")}`), o.forEach(c);
+  console.log(`🎯 Page: ${o} | Modules: ${e.join(", ")}`), e.forEach(a);
 }
-document.addEventListener("DOMContentLoaded", l);
+document.addEventListener("DOMContentLoaded", c);
