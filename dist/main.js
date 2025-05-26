@@ -21,7 +21,7 @@ const i = (e, o, t) => {
 async function c(e) {
   try {
     console.log(`📦 Chargement module: ${e}`);
-    const { init: o } = await i(/* @__PURE__ */ Object.assign({ "./modules/faq-accordion.js": () => import("./faq-accordion-fE33U0jj.mjs") }), `./modules/${e}.js`, 3);
+    const { init: o } = await i(/* @__PURE__ */ Object.assign({ "./modules/faq-accordion.js": () => import("./faq-accordion.js") }), `./modules/${e}.js`, 3);
     o && (o(), console.log(`✅ Module ${e} initialisé`));
   } catch (o) {
     console.error(`❌ Erreur module ${e}:`, o);
