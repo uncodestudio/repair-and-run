@@ -1,9 +1,23 @@
 import { pages } from './config.js'
 
+// Force Vite à voir tous les modules (important pour le build)
+const moduleMap = {
+  'faq-accordion': () => import('./modules/faq-accordion.js')
+  // Ajouter ici tes futurs modules :
+  // 'slider': () => import('./modules/slider.js'),
+  // 'menu-mobile': () => import('./modules/menu-mobile.js')
+}
+
 async function loadModule(name) {
   try {
     console.log(`📦 Chargement module: ${name}`)
-    const { init } = await import(`./${name}.js`) // ← Changement ici
+    
+    const moduleLoader = moduleMap[name]
+    if (!moduleLoader) {
+      throw new Error(`Module ${name} non configuré dans moduleMap`)
+    }
+    
+    const { init } = await moduleLoader()
     if (init) {
       init()
       console.log(`✅ Module ${name} initialisé`)
