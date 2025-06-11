@@ -1,6 +1,5 @@
 // Module Splide Slider
 import { Splide } from '@splidejs/splide'
-import '@splidejs/splide/css'
 
 export function init() {
   console.log('✅ Splide Slider initialisé')

@@ -9,6 +9,7 @@ export default defineConfig({
   
   build: {
     outDir: 'dist',
+    minify: 'terser',
     lib: {
       entry: 'main.js',
       name: 'WebflowApp',
