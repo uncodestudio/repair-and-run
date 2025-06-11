@@ -2,10 +2,10 @@
 export function init() {
   console.log('✅ Layout Reverse initialisé')
   
-  const components = document.querySelectorAll('.layout-reparations_component')
+  const components = document.querySelectorAll('.layout-reverse_component')
   
   if (!components.length) {
-    console.warn('⚠️ Aucun élément .layout-reparations_component trouvé')
+    console.warn('⚠️ Aucun élément .layout-reverse_component trouvé')
     return
   }
   
