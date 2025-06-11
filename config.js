@@ -8,6 +8,8 @@ export const pages = {
   'reparations': ['faq-accordion','layout-reverse'],
   'reparation': ['faq-accordion','splide-slider'],
   'services': ['faq-accordion','layout-reverse'],
+  'service': ['faq-accordion','splide-slider'],
+
   // 'about': ['animations'],
   // 'contact': ['contact-form', 'animations'],
   // 'shop': ['product-grid', 'animations']
