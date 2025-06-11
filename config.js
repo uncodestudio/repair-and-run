@@ -5,7 +5,7 @@ export const pages = {
   'homepage': ['faq-accordion','splide-slider'],
   'blog': ['faq-accordion'],
   'article': ['faq-accordion'],
-  'reparations': ['faq-accordion'],
+  'reparations': ['faq-accordion','layout-reverse'],
   'reparation': ['faq-accordion','splide-slider'],
   // 'about': ['animations'],
   // 'contact': ['contact-form', 'animations'],

@@ -3,11 +3,12 @@ import { pages } from './config.js'
 // Import direct du module (pas dynamique)
 import { init as faqAccordionInit } from './modules/faq-accordion.js'
 import { init as splideSliderInit } from './modules/splide-slider.js'
+import { init as layoutReverseInit } from './modules/layout-reverse.js'
 
 const moduleMap = {
   'faq-accordion': faqAccordionInit,
-  'splide-slider': splideSliderInit
-
+  'splide-slider': splideSliderInit,
+  'layout-reverse': layoutReverseInit
 }
 
 function loadModule(name) {
