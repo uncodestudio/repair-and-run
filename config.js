@@ -5,6 +5,7 @@ export const pages = {
   'homepage': ['faq-accordion'],
   'blog': ['faq-accordion'],
   'article': ['faq-accordion'],
+  'reparations': ['faq-accordion'],
   // 'about': ['animations'],
   // 'contact': ['contact-form', 'animations'],
   // 'shop': ['product-grid', 'animations']
