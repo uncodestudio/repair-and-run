@@ -5,7 +5,7 @@ import { init as faqAccordionInit } from './modules/faq-accordion.js'
 import { init as splideSliderInit } from './modules/splide-slider.js'
 
 const moduleMap = {
-  'faq-accordion': faqAccordionInit
+  'faq-accordion': faqAccordionInit,
   'splide-slider': splideSliderInit
 
 }
