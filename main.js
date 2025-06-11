@@ -2,9 +2,12 @@ import { pages } from './config.js'
 
 // Import direct du module (pas dynamique)
 import { init as faqAccordionInit } from './modules/faq-accordion.js'
+import { init as splideSliderInit } from './modules/splide-slider.js'
 
 const moduleMap = {
   'faq-accordion': faqAccordionInit
+  'splide-slider': splideSliderInit
+
 }
 
 function loadModule(name) {
