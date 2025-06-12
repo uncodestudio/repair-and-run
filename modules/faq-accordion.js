@@ -1,5 +1,5 @@
 // Module FAQ Accordion
-import { gsap } from 'gsap/gsap-core'
+import { gsap } from 'gsap'
 
 export function init() {
   const accordions = document.querySelectorAll('.faq_accordion')
