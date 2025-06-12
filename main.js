@@ -4,11 +4,14 @@ import { pages } from './config.js'
 import { init as faqAccordionInit } from './modules/faq-accordion.js'
 import { init as splideSliderInit } from './modules/splide-slider.js'
 import { init as layoutReverseInit } from './modules/layout-reverse.js'
+import { init as splidePartnerInit } from './modules/splide-partner.js'
+
 
 const moduleMap = {
   'faq-accordion': faqAccordionInit,
   'splide-slider': splideSliderInit,
-  'layout-reverse': layoutReverseInit
+  'layout-reverse': layoutReverseInit,
+  'splide-partner': splidePartnerInit
 }
 
 function loadModule(name) {
