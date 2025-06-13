@@ -1,6 +1,3 @@
-// Configuration des modules par page
-// À modifier pour chaque projet client
-
 export const pages = {
   'homepage': ['faq-accordion','splide-slider'],
   'blog': ['faq-accordion'],
@@ -9,8 +6,10 @@ export const pages = {
   'reparation': ['faq-accordion','splide-slider'],
   'services': ['faq-accordion','layout-reverse'],
   'service': ['faq-accordion','splide-slider'],
+  'partenaires': ['faq-accordion'],
+  'marque': ['splide-slider','faq-accordion'],
   'franchise': ['splide-partner'],
-  // 'about': ['animations'],
-  // 'contact': ['contact-form', 'animations'],
-  // 'shop': ['product-grid', 'animations']
+  'entreprise': ['faq-accordion'],
+  'concept': ['faq-accordion'],
+  'contact': ['faq-accordion'],
 }
