@@ -5,13 +5,16 @@ import { init as faqAccordionInit } from './modules/faq-accordion.js'
 import { init as splideSliderInit } from './modules/splide-slider.js'
 import { init as layoutReverseInit } from './modules/layout-reverse.js'
 import { init as splidePartnerInit } from './modules/splide-partner.js'
+import { init as conceptAccordionInit } from './modules/concept-accordion.js'
+
 
 
 const moduleMap = {
   'faq-accordion': faqAccordionInit,
   'splide-slider': splideSliderInit,
   'layout-reverse': layoutReverseInit,
-  'splide-partner': splidePartnerInit
+  'splide-partner': splidePartnerInit,
+  'concept-accordion': conceptAccordionInit
 }
 
 function loadModule(name) {

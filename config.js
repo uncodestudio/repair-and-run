@@ -10,6 +10,6 @@ export const pages = {
   'marque': ['splide-slider','faq-accordion'],
   'franchise': ['splide-partner'],
   'entreprise': ['faq-accordion'],
-  'concept': ['faq-accordion'],
+  'concept': ['concept-accordion'],
   'contact': ['faq-accordion'],
 }
