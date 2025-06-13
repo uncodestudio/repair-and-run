@@ -16,7 +16,6 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@splidejs/splide": "^4.1.4",
-    "gsap": "^3.13.0"
+    "@splidejs/splide": "^4.1.4"
   }
 }

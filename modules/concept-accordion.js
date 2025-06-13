@@ -1,6 +1,4 @@
 // Module Concept Accordion
-import { gsap } from 'gsap'
-
 export function init() {
   console.log('✅ Concept Accordion initialisé')
   
