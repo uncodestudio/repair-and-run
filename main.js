@@ -8,7 +8,10 @@ import { init as splidePartnerInit } from './modules/splide-partner.js'
 import { init as conceptAccordionInit } from './modules/concept-accordion.js'
 import { init as splideReparationInit } from './modules/splide-reparation.js'
 
-
+// Helper pour les logs (supprimés en production)
+const log = import.meta.env.DEV ? console.log : () => {}
+const warn = import.meta.env.DEV ? console.warn : () => {}
+const error = import.meta.env.DEV ? console.error : () => {}
 
 const moduleMap = {
   'faq-accordion': faqAccordionInit,
@@ -17,12 +20,11 @@ const moduleMap = {
   'splide-partner': splidePartnerInit,
   'concept-accordion': conceptAccordionInit,
   'splide-reparation': splideReparationInit
-
 }
 
 function loadModule(name) {
   try {
-    console.log(`📦 Chargement module: ${name}`)
+    log(`📦 Chargement module: ${name}`)
     
     const moduleInit = moduleMap[name]
     if (!moduleInit) {
@@ -30,9 +32,9 @@ function loadModule(name) {
     }
     
     moduleInit()
-    console.log(`✅ Module ${name} initialisé`)
-  } catch (error) {
-    console.error(`❌ Erreur module ${name}:`, error)
+    log(`✅ Module ${name} initialisé`)
+  } catch (err) {
+    error(`❌ Erreur module ${name}:`, err)
   }
 }
 
@@ -40,18 +42,18 @@ function initApp() {
   const page = document.body.dataset.page
   
   if (!page) {
-    console.warn('⚠️ Ajoute data-page="..." sur le body dans Webflow')
+    warn('⚠️ Ajoute data-page="..." sur le body dans Webflow')
     return
   }
   
   const modules = pages[page]
   
   if (!modules) {
-    console.log(`📄 Page "${page}" : aucun module configuré`)
+    log(`📄 Page "${page}" : aucun module configuré`)
     return
   }
   
-  console.log(`🎯 Page: ${page} | Modules: ${modules.join(', ')}`)
+  log(`🎯 Page: ${page} | Modules: ${modules.join(', ')}`)
   modules.forEach(loadModule)
 }
 
