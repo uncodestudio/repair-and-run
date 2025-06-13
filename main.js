@@ -6,6 +6,7 @@ import { init as splideSliderInit } from './modules/splide-slider.js'
 import { init as layoutReverseInit } from './modules/layout-reverse.js'
 import { init as splidePartnerInit } from './modules/splide-partner.js'
 import { init as conceptAccordionInit } from './modules/concept-accordion.js'
+import { init as splideReparationInit } from './modules/splide-reparation.js'
 
 
 
@@ -14,7 +15,9 @@ const moduleMap = {
   'splide-slider': splideSliderInit,
   'layout-reverse': layoutReverseInit,
   'splide-partner': splidePartnerInit,
-  'concept-accordion': conceptAccordionInit
+  'concept-accordion': conceptAccordionInit,
+  'splide-reparation': splideReparationInit
+
 }
 
 function loadModule(name) {
