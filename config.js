@@ -12,4 +12,5 @@ export const pages = {
   'entreprise': ['faq-accordion'],
   'concept': ['concept-accordion'],
   'contact': ['faq-accordion'],
+  'maintenance': ['faq-accordion','splide-partner']
 }
