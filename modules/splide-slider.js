@@ -15,7 +15,7 @@ export function init() {
   const splide = new Splide('.slides', {
     perPage: 3,
     perMove: 1,
-    focus: 'right',
+    focus: 'left',
     type: 'slide',
     gap: '1.5rem',
     arrows: false,

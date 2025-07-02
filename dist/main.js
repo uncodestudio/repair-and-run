@@ -11,9 +11,10 @@ const pages = {
   "franchise": ["splide-partner"],
   "entreprise": ["faq-accordion"],
   "concept": ["concept-accordion"],
-  "contact": ["faq-accordion"]
+  "contact": ["faq-accordion"],
+  "maintenance": ["faq-accordion", "splide-partner"]
 };
-function init$5() {
+function init$6() {
   const accordions = document.querySelectorAll(".faq_accordion");
   if (!accordions.length) return;
   accordions.forEach((accordion) => {
@@ -2618,7 +2619,7 @@ var _Splide = /* @__PURE__ */ function() {
 var Splide = _Splide;
 Splide.defaults = {};
 Splide.STATES = STATES;
-function init$4() {
+function init$5() {
   console.log("✅ Splide Slider initialisé");
   const slidesSlider = document.querySelector(".slides");
   if (!slidesSlider) {
@@ -2628,7 +2629,7 @@ function init$4() {
   const splide = new Splide(".slides", {
     perPage: 3,
     perMove: 1,
-    focus: "right",
+    focus: "left",
     type: "slide",
     gap: "1.5rem",
     arrows: false,
@@ -2656,7 +2657,7 @@ function init$4() {
   splide.mount();
   console.log("✅ Splide monté");
 }
-function init$3() {
+function init$4() {
   console.log("✅ Layout Reverse initialisé");
   const components = document.querySelectorAll(".layout-reverse_component");
   if (!components.length) {
@@ -2671,7 +2672,7 @@ function init$3() {
   });
   console.log(`✅ ${components.length} composants traités`);
 }
-function init$2() {
+function init$3() {
   console.log("✅ Splide Partner initialisé");
   const partnerSlider = document.querySelector(".partner");
   if (!partnerSlider) {
@@ -2699,7 +2700,7 @@ function init$2() {
   }).mount();
   console.log("✅ Splide Partner monté");
 }
-function init$1() {
+function init$2() {
   console.log("✅ Concept Accordion initialisé");
   const accordions = document.querySelectorAll(".concept_accordion");
   if (!accordions.length) {
@@ -2750,7 +2751,7 @@ function init$1() {
   });
   console.log(`✅ ${accordions.length} concept accordions traités`);
 }
-function init() {
+function init$1() {
   console.log("✅ Splide Slider initialisé");
   const slidesSlider = document.querySelector(".reparation");
   if (!slidesSlider) {
@@ -2760,7 +2761,7 @@ function init() {
   const splide = new Splide(".reparation", {
     perPage: 3,
     perMove: 1,
-    focus: "right",
+    focus: "left",
     type: "slide",
     gap: "1.5rem",
     arrows: false,
@@ -2788,39 +2789,108 @@ function init() {
   splide.mount();
   console.log("✅ Splide monté");
 }
-const moduleMap = {
-  "faq-accordion": init$5,
-  "splide-slider": init$4,
-  "layout-reverse": init$3,
-  "splide-partner": init$2,
-  "concept-accordion": init$1,
-  "splide-reparation": init
+function init() {
+  const accordions = document.querySelectorAll(".navbar_dropdown-dropdown_ateliers");
+  if (!accordions.length) return;
+  accordions.forEach((accordion) => {
+    const question = accordion.querySelector(".navbar_dropdown-dropdown_toggle");
+    const answer = accordion.querySelector(".navbar_dropdown-content");
+    const icon = accordion.querySelector(".dropdown-dropdown_chevron");
+    if (!question || !answer) return;
+    gsap.set(answer, { height: 0, overflow: "hidden" });
+    if (icon) {
+      gsap.set(icon, { rotate: 0 });
+    }
+    question.setAttribute("aria-expanded", "false");
+    answer.setAttribute("aria-hidden", "true");
+    question.addEventListener("click", () => {
+      const isOpen = accordion.classList.contains("is-open");
+      accordions.forEach((item) => {
+        if (item !== accordion) {
+          const otherAnswer = item.querySelector(".navbar_dropdown-content");
+          const otherIcon = item.querySelector(".dropdown-dropdown_chevron");
+          const otherQuestion = item.querySelector(".navbar_dropdown-dropdown_toggle");
+          item.classList.remove("is-open");
+          if (otherAnswer) {
+            gsap.to(otherAnswer, { height: 0, duration: 0.3 });
+            otherAnswer.setAttribute("aria-hidden", "true");
+          }
+          if (otherIcon) {
+            gsap.to(otherIcon, { rotate: 0, duration: 0.3 });
+          }
+          if (otherQuestion) {
+            otherQuestion.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+      if (isOpen) {
+        accordion.classList.remove("is-open");
+        gsap.to(answer, { height: 0, duration: 0.3 });
+        if (icon) {
+          gsap.to(icon, { rotate: 0, duration: 0.3 });
+        }
+        question.setAttribute("aria-expanded", "false");
+        answer.setAttribute("aria-hidden", "true");
+      } else {
+        accordion.classList.add("is-open");
+        gsap.to(answer, { height: "auto", duration: 0.4 });
+        if (icon) {
+          gsap.to(icon, { rotate: -180, duration: 0.4 });
+        }
+        question.setAttribute("aria-expanded", "true");
+        answer.setAttribute("aria-hidden", "false");
+      }
+    });
+  });
+}
+const log = () => {
 };
+const error = () => {
+};
+const moduleMap = {
+  "faq-accordion": init$6,
+  "splide-slider": init$5,
+  "layout-reverse": init$4,
+  "splide-partner": init$3,
+  "concept-accordion": init$2,
+  "splide-reparation": init$1
+};
+const globalModules = [
+  { name: "nav-accordion", init }
+  // Tu peux en ajouter d'autres ici
+];
 function loadModule(name) {
   try {
-    console.log(`📦 Chargement module: ${name}`);
+    log(`📦 Chargement module: ${name}`);
     const moduleInit = moduleMap[name];
     if (!moduleInit) {
       throw new Error(`Module ${name} non configuré`);
     }
     moduleInit();
-    console.log(`✅ Module ${name} initialisé`);
-  } catch (error) {
-    console.error(`❌ Erreur module ${name}:`, error);
+    log(`✅ Module ${name} initialisé`);
+  } catch (err) {
+  }
+}
+function loadGlobalModule(module) {
+  try {
+    log(`🌍 Chargement module global: ${module.name}`);
+    module.init();
+    log(`✅ Module global ${module.name} initialisé`);
+  } catch (err) {
+    error(`❌ Erreur module global ${module.name}:`);
   }
 }
 function initApp() {
+  globalModules.forEach(loadGlobalModule);
   const page = document.body.dataset.page;
   if (!page) {
-    console.warn('⚠️ Ajoute data-page="..." sur le body dans Webflow');
     return;
   }
   const modules = pages[page];
   if (!modules) {
-    console.log(`📄 Page "${page}" : aucun module configuré`);
     return;
   }
-  console.log(`🎯 Page: ${page} | Modules: ${modules.join(", ")}`);
+  log(`🎯 Page: ${page} | Modules: ${modules.join(", ")}`);
   modules.forEach(loadModule);
 }
 document.addEventListener("DOMContentLoaded", initApp);

@@ -8,6 +8,9 @@ import { init as splidePartnerInit } from './modules/splide-partner.js'
 import { init as conceptAccordionInit } from './modules/concept-accordion.js'
 import { init as splideReparationInit } from './modules/splide-reparation.js'
 
+// MODULE GLOBAL - Se lance sur toutes les pages
+import { init as navAccordionInit } from './modules/nav-accordion.js'
+
 // Helper pour les logs (supprimés en production)
 const log = import.meta.env.DEV ? console.log : () => {}
 const warn = import.meta.env.DEV ? console.warn : () => {}
@@ -21,6 +24,12 @@ const moduleMap = {
   'concept-accordion': conceptAccordionInit,
   'splide-reparation': splideReparationInit
 }
+
+// Modules globaux qui se lancent sur toutes les pages
+const globalModules = [
+  { name: 'nav-accordion', init: navAccordionInit }
+  // Tu peux en ajouter d'autres ici
+]
 
 function loadModule(name) {
   try {
@@ -38,7 +47,22 @@ function loadModule(name) {
   }
 }
 
+function loadGlobalModule(module) {
+  try {
+    log(`🌍 Chargement module global: ${module.name}`)
+    module.init()
+    log(`✅ Module global ${module.name} initialisé`)
+  } catch (err) {
+    error(`❌ Erreur module global ${module.name}:`, err)
+  }
+}
+
 function initApp() {
+  // 1. CHARGER LES MODULES GLOBAUX EN PREMIER
+  log('🌍 Initialisation modules globaux...')
+  globalModules.forEach(loadGlobalModule)
+  
+  // 2. CHARGER LES MODULES SPÉCIFIQUES À LA PAGE
   const page = document.body.dataset.page
   
   if (!page) {
