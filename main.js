@@ -7,6 +7,8 @@ import { init as layoutReverseInit } from './modules/layout-reverse.js'
 import { init as splidePartnerInit } from './modules/splide-partner.js'
 import { init as conceptAccordionInit } from './modules/concept-accordion.js'
 import { init as splideReparationInit } from './modules/splide-reparation.js'
+import { init as logoMarqueeInit } from './modules/logo-marquee.js'
+
 
 // MODULE GLOBAL - Se lance sur toutes les pages
 import { init as navAccordionInit } from './modules/nav-accordion.js'
@@ -22,7 +24,8 @@ const moduleMap = {
   'layout-reverse': layoutReverseInit,
   'splide-partner': splidePartnerInit,
   'concept-accordion': conceptAccordionInit,
-  'splide-reparation': splideReparationInit
+  'splide-reparation': splideReparationInit,
+  'logo-marquee': logoMarqueeInit
 }
 
 // Modules globaux qui se lancent sur toutes les pages

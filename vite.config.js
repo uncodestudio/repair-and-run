@@ -23,8 +23,12 @@ export default defineConfig({
       formats: ['es']
     },
     rollupOptions: {
+      external: ['gsap'],  // ← GSAP en external
       output: {
-        entryFileNames: 'main.js'
+        entryFileNames: 'main.js',
+        globals: {
+          gsap: 'gsap'  // ← Mapping global
+        }
       }
     }
   }

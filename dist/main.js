@@ -1,5 +1,5 @@
 const pages = {
-  "homepage": ["faq-accordion", "splide-slider"],
+  "homepage": ["faq-accordion", "splide-slider", "logo-marquee"],
   "blog": ["faq-accordion"],
   "article": ["faq-accordion"],
   "reparations": ["faq-accordion", "layout-reverse"],
@@ -12,9 +12,11 @@ const pages = {
   "entreprise": ["faq-accordion"],
   "concept": ["concept-accordion"],
   "contact": ["faq-accordion"],
-  "maintenance": ["faq-accordion", "splide-partner"]
+  "maintenance": ["faq-accordion", "splide-partner"],
+  "template-1": ["splide-slider", "logo-marquee", "faq-accordion"],
+  "template-2": ["splide-slider", "logo-marquee", "faq-accordion"]
 };
-function init$6() {
+function init$7() {
   const accordions = document.querySelectorAll(".faq_accordion");
   if (!accordions.length) return;
   accordions.forEach((accordion) => {
@@ -2619,7 +2621,7 @@ var _Splide = /* @__PURE__ */ function() {
 var Splide = _Splide;
 Splide.defaults = {};
 Splide.STATES = STATES;
-function init$5() {
+function init$6() {
   console.log("✅ Splide Slider initialisé");
   const slidesSlider = document.querySelector(".slides");
   if (!slidesSlider) {
@@ -2657,7 +2659,7 @@ function init$5() {
   splide.mount();
   console.log("✅ Splide monté");
 }
-function init$4() {
+function init$5() {
   console.log("✅ Layout Reverse initialisé");
   const components = document.querySelectorAll(".layout-reverse_component");
   if (!components.length) {
@@ -2672,7 +2674,7 @@ function init$4() {
   });
   console.log(`✅ ${components.length} composants traités`);
 }
-function init$3() {
+function init$4() {
   console.log("✅ Splide Partner initialisé");
   const partnerSlider = document.querySelector(".partner");
   if (!partnerSlider) {
@@ -2700,7 +2702,7 @@ function init$3() {
   }).mount();
   console.log("✅ Splide Partner monté");
 }
-function init$2() {
+function init$3() {
   console.log("✅ Concept Accordion initialisé");
   const accordions = document.querySelectorAll(".concept_accordion");
   if (!accordions.length) {
@@ -2751,7 +2753,7 @@ function init$2() {
   });
   console.log(`✅ ${accordions.length} concept accordions traités`);
 }
-function init$1() {
+function init$2() {
   console.log("✅ Splide Slider initialisé");
   const slidesSlider = document.querySelector(".reparation");
   if (!slidesSlider) {
@@ -2788,6 +2790,48 @@ function init$1() {
   });
   splide.mount();
   console.log("✅ Splide monté");
+}
+function init$1() {
+  if (typeof gsap === "undefined") return;
+  const marquees = document.querySelectorAll(".marquee");
+  if (!marquees.length) return;
+  marquees.forEach((marquee) => {
+    const content = marquee.firstElementChild;
+    if (!content) return;
+    content.innerHTML += content.innerHTML;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const isRight = marquee.dataset.direction === "right";
+    const speed = +marquee.dataset.speed || 15;
+    gsap.set(content, {
+      force3D: true,
+      xPercent: isRight ? -50 : 0
+    });
+    if (isRight) {
+      const tl = gsap.to(content, {
+        xPercent: 0,
+        duration: speed,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          xPercent: gsap.utils.wrap(-50, 0)
+        }
+      });
+      marquee.onmouseenter = () => tl.pause();
+      marquee.onmouseleave = () => tl.play();
+    } else {
+      const tl = gsap.to(content, {
+        xPercent: -50,
+        duration: speed,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          xPercent: gsap.utils.wrap(0, -50)
+        }
+      });
+      marquee.onmouseenter = () => tl.pause();
+      marquee.onmouseleave = () => tl.play();
+    }
+  });
 }
 function init() {
   const accordions = document.querySelectorAll(".navbar_dropdown-dropdown_ateliers");
@@ -2848,12 +2892,13 @@ const log = () => {
 const error = () => {
 };
 const moduleMap = {
-  "faq-accordion": init$6,
-  "splide-slider": init$5,
-  "layout-reverse": init$4,
-  "splide-partner": init$3,
-  "concept-accordion": init$2,
-  "splide-reparation": init$1
+  "faq-accordion": init$7,
+  "splide-slider": init$6,
+  "layout-reverse": init$5,
+  "splide-partner": init$4,
+  "concept-accordion": init$3,
+  "splide-reparation": init$2,
+  "logo-marquee": init$1
 };
 const globalModules = [
   { name: "nav-accordion", init }

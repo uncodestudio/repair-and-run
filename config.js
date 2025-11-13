@@ -1,5 +1,5 @@
 export const pages = {
-  'homepage': ['faq-accordion','splide-slider'],
+  'homepage': ['faq-accordion','splide-slider','logo-marquee'],
   'blog': ['faq-accordion'],
   'article': ['faq-accordion'],
   'reparations': ['faq-accordion','layout-reverse'],
@@ -12,5 +12,8 @@ export const pages = {
   'entreprise': ['faq-accordion'],
   'concept': ['concept-accordion'],
   'contact': ['faq-accordion'],
-  'maintenance': ['faq-accordion','splide-partner']
+  'maintenance': ['faq-accordion','splide-partner'],
+  'template-1': ['splide-slider','logo-marquee','faq-accordion'],
+  'template-2': ['splide-slider','logo-marquee','faq-accordion']
+
 }
