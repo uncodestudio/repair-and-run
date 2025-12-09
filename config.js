@@ -3,7 +3,7 @@ export const pages = {
   'blog': ['faq-accordion'],
   'article': ['faq-accordion'],
   'reparations': ['faq-accordion','layout-reverse'],
-  'reparation': ['faq-accordion','splide-slider','splide-reparation'],
+  'reparation': ['faq-accordion','splide-slider','splide-reparation','logo-marquee'],
   'services': ['faq-accordion','layout-reverse'],
   'service': ['faq-accordion','splide-slider'],
   'partenaires': ['faq-accordion'],
