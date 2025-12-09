@@ -7,7 +7,7 @@ export const pages = {
   'services': ['faq-accordion','layout-reverse'],
   'service': ['faq-accordion','splide-slider'],
   'partenaires': ['faq-accordion'],
-  'marque': ['splide-slider','faq-accordion'],
+  'marque': ['splide-slider','faq-accordion','logo-marquee'],
   'franchise': ['splide-partner'],
   'entreprise': ['faq-accordion'],
   'concept': ['concept-accordion'],
