@@ -2,7 +2,7 @@ export const pages = {
   'homepage': ['faq-accordion','splide-slider','logo-marquee'],
   'blog': ['faq-accordion'],
   'article': ['faq-accordion'],
-  'reparations': ['faq-accordion','layout-reverse','splide-slider'],
+  'reparations': ['faq-accordion','layout-reverse','logo-marquee'],
   'reparation': ['faq-accordion','splide-slider','splide-reparation','logo-marquee'],
   'services': ['faq-accordion','layout-reverse'],
   'service': ['faq-accordion','splide-slider'],
